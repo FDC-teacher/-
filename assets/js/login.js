@@ -47,36 +47,37 @@ $(function () {
             }, function (res) {
                 if (res.status !== 0) {
                     //应用定义的元素 提示框
-                    return layer.msg(res.message, {icon: 5});
+                    return layer.msg(res.message, { icon: 5 });
                 }
                 layer.msg('注册成功');
                 $('#form_reg [name=password]').val('')
                 $('#form_reg [name=repassword]').val('')
-                
-        })
-        
+
+            })
+
     })
 
-    
-    //监听登录表单的提交事件
-    $('#form_login').on('submit',function(e){
+
+
+    // 监听登录表单的提交事件
+    $('#form_login').on('submit', function (e) {
         e.preventDefault()
         $.post(
             '/api/login'
-            ,{
-                username:$('#form_login [name=username]').val(),
-                password:$('#form_login [name=password]').val()
-            },function(res){
+            , {
+                username: $('#form_login [name=username]').val(),
+                password: $('#form_login [name=password]').val()
+            }, function (res) {
                 if (res.status !== 0) {
                     //应用定义的元素 提示框
-                    return layer.msg(res.message, {icon: 5});
-            }
-            layer.msg('登录成功');
-            //将登录成功得到的token值存到localStorage中
-            localStorage.setItem('token',res.token)
-            //跳转到后台页面
-            location.href='/index.html'
-        })
+                    return layer.msg(res.message, { icon: 5 });
+                }
+                layer.msg('登录成功');
+                //将登录成功得到的token值存到localStorage中
+                localStorage.setItem('token', res.token)
+                //跳转到后台页面
+                location.href = '/index.html'
+            })
     })
 
 })
