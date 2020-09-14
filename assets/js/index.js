@@ -43,13 +43,13 @@ function getuserinfo() {
 //渲染用户头像 use是云端获取到的数据
 function renderAvatar(user) {
     //获取用户名称
-    var name = user.username || user.nickname
+    var name = user.nickname || user.username
     //获取用户欢迎文本
-    $('.welcome').html('欢迎&nbsp;&nbsp;' + name)
+    $('#welcome').html('欢迎&nbsp;&nbsp;' + name)
     //按需渲染用户头想
     if (user.user_pic !== null) {
         // $('.layui-nav-img').attr('src',user. user_pic).show()
-        $('.layui-nav-img').html(user.user_pic).show()
+        $('.layui-nav-img').attr('src', user.user_pic).show()
         $('.text-avatar').hide()
     } else {
         $('.layui-nav-img').hide()

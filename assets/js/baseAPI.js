@@ -9,6 +9,7 @@ $.ajaxPrefilter(function (options) {
             Authorization: localStorage.getItem('token') || ''
         }
     }
+    //再注册区删除token值 防止客户从地址栏直接进入
     options.complete = function(res){
         if(res.responseJSON.status === 1 && res.responseJSON.message === "身份认证失败！"){
             localStorage.removeItem('token')
